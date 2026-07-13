@@ -2,7 +2,7 @@
 
 > **Versi**: 1.0 · **Status dokumen**: Final (sprint selesai)
 > **Terakhir diperbarui**: 2026-07-13 (Sprint 001)
-> **Terkait**: [Indeks sprint](README.md) · [CURRENT_SPRINT.md](../CURRENT_SPRINT.md) · [Report 001](../reports/001-sdos-v1.1-refinement.md)
+> **Terkait**: [Indeks sprint](README.md) · [Current State v2](../CURRENT_STATE.md) · [Report 001](../reports/001-sdos-v1.1-refinement.md)
 
 - **Status**: 🏁 Done
 - **Durasi target**: 1 hari

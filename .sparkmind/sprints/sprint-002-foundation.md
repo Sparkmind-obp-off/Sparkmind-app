@@ -2,7 +2,7 @@
 
 > **Versi**: 2.0 · **Status dokumen**: Final (sprint selesai)
 > **Terakhir diperbarui**: 2026-07-13 (Sprint 002)
-> **Terkait**: [Indeks sprint](README.md) · [ADR-0005](../decisions/ADR-0005-sprint-002-rescope.md) · [Report 002](../reports/002-engineering-foundation.md) · [source-code.md](../standards/source-code.md)
+> **Terkait**: [Indeks sprint](README.md) · [ADR-0005](../decisions/ADR-0005-sprint-002-rescope.md) · [Report 002](../reports/002-engineering-foundation.md) · [Engineering Standards v2](../standards/engineering.md)
 
 > ℹ️ Sprint ini sebelumnya bernomor **001** (di-renumber jadi 002 — lihat
 > [ADR-0004](../decisions/ADR-0004-sprint-renumbering.md)), lalu **di-rescope**

@@ -1,111 +1,75 @@
-# .sparkmind — Sparkmind Development Operating System (SDOS)
+# Sparkmind Development Operating System (SDOS) v2
 
-> **Versi**: 1.1 · **Status dokumen**: Aktif
-> **Terakhir diperbarui**: 2026-07-13 (Sprint 001 — SDOS v1.1 Refinement)
-> **Terkait**: [CONSTITUTION.md](CONSTITUTION.md) · [STATE.md](STATE.md) · [CURRENT_SPRINT.md](CURRENT_SPRINT.md) · [DECISION_LOG.md](DECISION_LOG.md)
-> **Dibuat**: Mission 000 (Bootstrap) · Disempurnakan: Sprint 001
+> **Version**: 2.0 · **Status**: Active
+> **Last updated**: 2026-07-13 (Sprint 003 — SDOS v2 Upgrade)
+> **Owner**: Engineering · **Source of truth**: this repository
 
-Folder ini adalah **Operating System** dari repository Sparkmind.
+SDOS is the lightweight operating layer for Sparkmind engineering. It keeps durable context in Git while minimizing what an AI or human must read and update.
 
-Repository adalah Single Source of Truth. Semua knowledge, aturan, state, dan
-keputusan proyek hidup di sini — **bukan** di system prompt, bukan di chat,
-bukan di kepala siapa pun.
+## Start in 2 Minutes
 
----
+1. Read [`CURRENT_STATE.md`](CURRENT_STATE.md): active sprint, current task, blockers, and next action.
+2. Read only the task-specific documents from the routing table below.
+3. Follow [`WORKFLOW.md`](WORKFLOW.md), implement, verify, update `CURRENT_STATE.md`, commit, and push.
+4. If the session stops mid-task, fill [`SESSION_HANDOFF.md`](SESSION_HANDOFF.md).
 
-## 🤖 Untuk AI Engineer: Mulai dari Sini
+`CURRENT_STATE.md` is the only document that must be considered at every engineering session. Do not load the whole `.sparkmind/` directory by default.
 
-Setiap sesi kerja **WAJIB** dimulai dengan membaca file berikut, sesuai urutan:
+## Context Router
 
-| Urutan | File | Tujuan |
-|--------|------|--------|
-| 1 | [`CONSTITUTION.md`](CONSTITUTION.md) | Aturan dan prinsip yang tidak boleh dilanggar |
-| 2 | [`STATE.md`](STATE.md) | Kondisi terkini proyek — apa yang sudah/belum ada |
-| 3 | [`CURRENT_SPRINT.md`](CURRENT_SPRINT.md) | Pointer sprint aktif → buka file sprint yang dirujuk |
-| 4 | [`DECISION_LOG.md`](DECISION_LOG.md) | Indeks seluruh ADR — keputusan yang mengikat |
-| 5 | [`context/`](context/) | Konteks bisnis, produk, dan tech stack |
-| 6 | [`workflows/session-lifecycle.md`](workflows/session-lifecycle.md) | Cara bekerja dalam satu sesi |
+| Task | Required context | Load only when needed |
+|---|---|---|
+| Any engineering task | `CURRENT_STATE.md`, `WORKFLOW.md` | Active sprint linked by state |
+| Product or business scope | `context/product.md` | `context/company.md`, related ADR |
+| Architecture or dependency | `docs/architecture.md`, `DECISION_LOG.md` | Relevant ADR, `context/tech-stack.md` |
+| Source code or environment | `standards/engineering.md`, `docs/setup.md` | Package README, architecture |
+| Documentation/governance | `standards/documentation.md` | Constitution, related report |
+| Resume interrupted work | `SESSION_HANDOFF.md`, `CURRENT_STATE.md` | Files named in handoff |
+| Permanent-rule change | `CONSTITUTION.md`, `DECISION_LOG.md` | New ADR required |
 
-Setelah membaca keenam hal di atas, baru boleh mulai bekerja.
+## Ownership Map
 
----
+| Information | Canonical owner | Update trigger |
+|---|---|---|
+| Active sprint, task, progress, blockers, next action | `CURRENT_STATE.md` | End of a work session or changed state |
+| Work lifecycle, Git, handoff policy | `WORKFLOW.md` | Workflow change only |
+| Permanent engineering principles | `CONSTITUTION.md` | Founder/CTO approval + ADR |
+| Architecture decisions and ADR index | `DECISION_LOG.md` + `decisions/` | Material decision only |
+| Business, product, and stack context | `context/` (Founder/CTO) | Strategy or approved stack changes |
+| Engineering and repository rules | `standards/engineering.md` | Standard changes |
+| Documentation rules and ownership | `standards/documentation.md` | Documentation policy changes |
+| Technical architecture | `docs/architecture.md` | Architecture changes |
+| Local setup | `docs/setup.md` | Setup/tooling changes |
+| Milestone history | root `CHANGELOG.md` | Release or milestone only |
+| Sprint plan and retrospective | `sprints/sprint-XXX-*.md` | Sprint planning/closure |
+| Evidence and outcomes | `reports/` | Once at sprint closure |
+| Interrupted-session recovery | `SESSION_HANDOFF.md` | Only while a handoff is active |
 
-## 📁 Struktur SDOS
+## Structure
 
-```
+```text
 .sparkmind/
-├── README.md                 ← Anda di sini
-├── CONSTITUTION.md           ← Prinsip & aturan permanen
-├── STATE.md                  ← Kondisi terkini proyek (selalu di-update)
-├── CURRENT_SPRINT.md         ← Pointer sprint aktif (satu-satunya sumber)
-├── DECISION_LOG.md           ← Indeks kanonis seluruh ADR
-│
-├── context/                  ← Knowledge (jarang berubah)
-│   ├── company.md            ← Visi, misi, positioning Sparkmind
-│   ├── product.md            ← Foundry, ClinicFlow AI, roadmap produk
-│   └── tech-stack.md         ← Stack final v1.0 & alasan pemilihannya
-│
-├── workflows/                ← Cara bekerja
-│   ├── session-lifecycle.md  ← Lifecycle wajib setiap sesi development
-│   └── git-workflow.md       ← Branch, commit, push
-│
-├── standards/                ← Standar kualitas
-│   ├── engineering.md        ← Standar penulisan kode
-│   ├── documentation.md      ← Standar dokumentasi
-│   └── repository.md         ← Standar struktur & kebersihan repo
-│
-├── sprints/                  ← Perencanaan kerja
-│   ├── README.md             ← Cara kerja sprint & indeks
-│   └── sprint-XXX-nama.md    ← Satu file per sprint
-│
-├── decisions/                ← ADR (Architecture Decision Records)
-│   ├── README.md             ← Aturan penulisan ADR (indeks: DECISION_LOG.md)
-│   └── ADR-XXXX-judul.md     ← Satu file per keputusan besar
-│
-├── templates/                ← Template dokumen
-│   ├── proposal.md
-│   ├── engineering-report.md
-│   ├── sprint.md
-│   └── adr.md
-│
-├── proposals/                ← Proposal menunggu keputusan Founder/CTO
-│   └── README.md
-│
-└── reports/                  ← Engineering Report per sesi/misi
-    └── XXX-judul.md
+├── README.md              # navigation and ownership
+├── CURRENT_STATE.md       # single operational state
+├── SESSION_HANDOFF.md     # temporary recovery context
+├── WORKFLOW.md            # session + Git lifecycle
+├── CONSTITUTION.md        # permanent rules
+├── DECISION_LOG.md        # ADR policy and index
+├── context/               # durable business/product/stack knowledge
+├── standards/             # engineering and documentation standards
+├── decisions/             # append-only ADRs
+├── sprints/               # sprint plans and retrospectives
+├── reports/               # sprint-level evidence and audit reports
+└── templates/             # ADR, sprint, and sprint report templates
 ```
 
----
+Historical sprints, reports, and ADRs are archives: they are discoverable through links but are not startup context.
 
-## 🧭 Aturan Pembagian Informasi
+## SDOS v2 Operating Rules
 
-| Tempat | Isi |
-|--------|-----|
-| **System Prompt** | Identitas, perilaku, prinsip kerja (pendek & stabil) |
-| **`.sparkmind/`** | Semua knowledge, standar, sprint, keputusan, state |
-| **Task/Mission** | Pekerjaan spesifik untuk satu sesi |
-
-Jangan pernah memindahkan knowledge ke system prompt. Jika ada aturan baru,
-tambahkan ke file yang sesuai di dalam `.sparkmind/`.
-
----
-
-## ✍️ Kewajiban Update
-
-Setelah setiap sesi kerja, file berikut **wajib diperiksa dan di-update** jika terdampak:
-
-- `STATE.md` — selalu update jika ada perubahan kondisi proyek
-- `CURRENT_SPRINT.md` — update saat status/progress sprint berubah
-- `CHANGELOG.md` (di root) — catat perubahan penting
-- `decisions/` + `DECISION_LOG.md` — jika ada keputusan arsitektur baru
-- `reports/` — buat Engineering Report baru setiap misi selesai
-- Sprint aktif — update progress task
-
----
-
-## 🏷 Metadata Standar Dokumen (sejak v1.1)
-
-Setiap dokumen SDOS memiliki blok metadata di bawah judul (versi, status,
-tanggal update, cross-reference). Aturan lengkap:
-[standards/documentation.md](standards/documentation.md) §3.
-Pengecualian: `templates/` (harus bersih agar bisa langsung disalin).
+- **One Update Principle**: routine sessions update only `CURRENT_STATE.md`; update other documents only when their owned fact changes.
+- **Lazy context**: follow links, never preload every document.
+- **Progressive documentation**: create a document only when a real system or recurring need exists.
+- **One document, one responsibility**: link to canonical facts instead of copying them.
+- **Milestone reporting**: update `CHANGELOG.md` and create an Engineering Report only at milestone/sprint closure.
+- **Clean handoff**: `SESSION_HANDOFF.md` is empty by default and temporary when used.

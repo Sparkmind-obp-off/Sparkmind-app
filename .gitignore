@@ -38,7 +38,8 @@ Thumbs.db
 *.tar.gz
 *.zip
 
-# === Test coverage ===
+# === TypeScript / test artifacts ===
+*.tsbuildinfo
 coverage/
 
 # === PM2 ===

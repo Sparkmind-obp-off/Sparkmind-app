@@ -1,109 +1,88 @@
 # Sparkmind
 
-> **Sparkmind — Building AI Employees for Modern Businesses.**
+> Building AI Employees for modern businesses.
 
-Repository resmi Sparkmind: platform **Foundry** dan produk vertikal AI
-(ClinicFlow AI, dst.) yang dibangun di atasnya.
+Sparkmind is a pre-product TypeScript monorepo for the Foundry platform and vertical AI products such as ClinicFlow AI. The repository also contains SDOS v2, its context-driven engineering operating system.
 
-- **Website (target)**: https://sparkmind.biz.id
-- **Status**: 🟡 Pre-product — Engineering Foundation selesai (Sprint 002)
-- **Terakhir diperbarui**: 2026-07-13
+## Status and URLs
 
----
+- **Phase**: Pre-product; engineering foundation complete
+- **SDOS**: Sparkmind Development Operating System v2.0
+- **Repository**: https://github.com/Sparkmind-obp-off/Sparkmind-app
+- **Planned website**: https://sparkmind.biz.id (not deployed)
+- **Current work/blockers**: [`.sparkmind/CURRENT_STATE.md`](.sparkmind/CURRENT_STATE.md)
 
-## 🧭 Mulai dari Sini
+## Start Here
 
-Repository ini adalah **Single Source of Truth**. Semua knowledge, aturan,
-keputusan, dan state proyek hidup di dalam repository — bukan di chat, bukan
-di kepala siapa pun.
+| Need | Read |
+|---|---|
+| AI/human engineering session | [SDOS v2 quick start](.sparkmind/README.md) |
+| Current task, blockers, next action | [`CURRENT_STATE.md`](.sparkmind/CURRENT_STATE.md) |
+| Install and run locally | [`docs/setup.md`](docs/setup.md) |
+| Technical architecture | [`docs/architecture.md`](docs/architecture.md) |
+| Accepted decisions | [Decision Log](.sparkmind/DECISION_LOG.md) |
+| Product direction | [`context/product.md`](.sparkmind/context/product.md) |
 
-| Anda adalah... | Baca dulu |
-|----------------|-----------|
-| **AI Engineer / Engineer baru** | [`.sparkmind/README.md`](.sparkmind/README.md) → ikuti urutan bacaan wajib |
-| **Founder / CTO** | [`.sparkmind/STATE.md`](.sparkmind/STATE.md) untuk kondisi terkini |
-| **Ingin tahu keputusan teknis** | [`.sparkmind/DECISION_LOG.md`](.sparkmind/DECISION_LOG.md) (indeks seluruh ADR) |
-| **Ingin tahu sprint aktif** | [`.sparkmind/CURRENT_SPRINT.md`](.sparkmind/CURRENT_SPRINT.md) |
-| **Ingin tahu rencana kerja** | [`.sparkmind/sprints/`](.sparkmind/sprints/README.md) |
+## Completed Features
 
----
+- pnpm + Turborepo workspace.
+- `apps/web`: Next.js 15 App Router placeholder application.
+- `packages/shared`: shared TypeScript constants and result type.
+- TypeScript strict mode, ESLint, Prettier, and workspace scripts.
+- SDOS v2: minimal context router, single operational state, one workflow, resumable handoff, ADR and sprint governance.
 
-## 🎯 Misi
+## Functional Entry Points
 
-Membantu Sparkmind memperoleh **customer pertama secepat mungkin** dengan
-software yang sederhana, berkualitas, dan mudah dipelihara.
+| Path/command | Purpose | Parameters |
+|---|---|---|
+| `apps/web/src/app/page.tsx` / `/` | Current placeholder web page | None |
+| `pnpm dev` | Start all development workspaces | None |
+| `pnpm build` | Build deployable workspaces | None |
+| `pnpm lint` | Run workspace linting | None |
+| `pnpm type-check` | Run TypeScript checks | None |
 
-Setiap keputusan engineering harus lolos pertanyaan:
+No public API routes, authentication flows, or product data endpoints exist yet.
 
-> *"Apakah ini membantu kita mendapatkan klien pertama?"*
+## Data Architecture
 
-## 📦 Produk
+- **Data models**: no business/domain models yet; `packages/shared` contains only foundational shared types.
+- **Storage**: no database, object storage, or persistent service is integrated.
+- **Data flow**: the current web application renders a static placeholder; target architecture is documented in [`docs/architecture.md`](docs/architecture.md).
 
-| Produk | Deskripsi | Status |
-|--------|-----------|--------|
-| **Sparkmind Foundry** | Platform/engine bersama untuk semua AI Employee | Rencana (Sprint 003) |
-| **ClinicFlow AI** | AI Receptionist untuk klinik kecil-menengah Indonesia | Rencana (Sprint 004) |
-| DealerFlow / HotelFlow / PropertyFlow / RestaurantFlow AI | Produk vertikal berikutnya | Backlog |
+## Not Yet Implemented
 
-Detail: [`.sparkmind/context/product.md`](.sparkmind/context/product.md)
+- Production landing page and Book a Demo flow.
+- DNS configuration and deployment.
+- Foundry AI/provider abstraction and knowledge layer.
+- ClinicFlow AI vertical product.
+- Authentication, API, database, analytics, and email integrations.
+- Automated CI/CD.
 
-## 🛠 Tech Stack (v1.0)
+## Recommended Next Steps
 
-TypeScript · Next.js 15 · Tailwind CSS + shadcn/ui · Vercel · Cloudflare
-(DNS/CDN) · Supabase · Clerk · Vercel AI SDK · pnpm + Turborepo
+1. Founder selects the next sprint: Landing Page or Foundry Core.
+2. If Landing Page is selected, provide deployment/DNS credentials through secure channels.
+3. Implement only the approved sprint and add infrastructure progressively.
+4. Review SDOS v2 metrics after two product sprints.
 
-Detail & alasan: [`.sparkmind/context/tech-stack.md`](.sparkmind/context/tech-stack.md)
-· Keputusan: [ADR-0001](.sparkmind/decisions/ADR-0001-tech-stack-v1.md)
+## User Guide
 
----
-
-## 🗂 Struktur Repository
-
+```bash
+git clone https://github.com/Sparkmind-obp-off/Sparkmind-app.git
+cd Sparkmind-app
+corepack enable
+pnpm install
+pnpm dev
 ```
-Sparkmind/
-├── .sparkmind/     ← SDOS: governance, knowledge, state, sprint, ADR, report
-├── apps/
-│   └── web/        ← Next.js 15 (App Router, TS strict) — placeholder
-├── packages/
-│   └── shared/     ← @sparkmind/shared — util & types bersama
-├── docs/           ← Dokumentasi teknis (setup, arsitektur)
-├── README.md       ← Anda di sini
-├── CHANGELOG.md    ← Riwayat perubahan penting
-└── package.json    ← Root workspace (pnpm + Turborepo)
-```
 
-> Setup development: [`docs/setup.md`](docs/setup.md). Workspace lain
-> (`packages/ui`, `packages/ai`, `packages/foundry`, `apps/dashboard`)
-> dibuat saat sprint yang membutuhkannya.
+Open http://localhost:3000. See [`docs/setup.md`](docs/setup.md) for checks and troubleshooting.
 
-## 🔁 Cara Kerja (Ringkas)
+## Deployment
 
-1. Setiap sesi kerja mengikuti
-   [`session-lifecycle.md`](.sparkmind/workflows/session-lifecycle.md).
-2. Commit memakai **Conventional Commits**
-   ([`git-workflow.md`](.sparkmind/workflows/git-workflow.md)).
-3. Setiap misi selesai → Engineering Report di
-   [`.sparkmind/reports/`](.sparkmind/reports/).
-4. `STATE.md` dan `CHANGELOG.md` selalu diperbarui di akhir sesi.
+- **Target platform**: Vercel application hosting behind Cloudflare DNS/CDN (ADR-0001).
+- **Status**: inactive; no production deployment or credentials are configured.
+- **Configuration**: deployment details will be added only when the Landing Page sprint is approved.
 
-## 🗺 Roadmap Sprint
+## License
 
-| Sprint | Nama | Status | Output Utama |
-|--------|------|--------|--------------|
-| 000 | Bootstrap SDOS | 🏁 Done | `.sparkmind/` + fondasi repo |
-| 001 | SDOS v1.1 Refinement | 🏁 Done | Metadata, cross-reference, CURRENT_SPRINT, DECISION_LOG |
-| 002 | Engineering Foundation | 🏁 Done | Monorepo scaffold + tooling + standar + docs |
-| — | Landing Page | 📋 Backlog | Hero + Book a Demo + DNS + deploy Vercel |
-| — | Foundry Core | 📋 Backlog | AI abstraction, prompts, knowledge layer |
-| — | ClinicFlow AI | 📋 Backlog | Demo AI Receptionist |
-| — | Sales | 📋 Backlog | Outreach & demo ke calon klien |
-
-> Penomoran ulang roadmap (Foundation → 002) dicatat di
-> [ADR-0004](.sparkmind/decisions/ADR-0004-sprint-renumbering.md);
-> rescope Sprint 002 (landing page keluar dari scope) di
-> [ADR-0005](.sparkmind/decisions/ADR-0005-sprint-002-rescope.md).
-
----
-
-## 📜 Lisensi
-
-Proprietary — © 2026 Sparkmind. Seluruh hak cipta dilindungi.
+Proprietary — © 2026 Sparkmind.

@@ -1,82 +1,66 @@
-# Development Setup — Sparkmind
+# Development Setup
 
-> **Versi**: 1.0 · **Status dokumen**: Aktif
-> **Terakhir diperbarui**: 2026-07-13 (Sprint 002)
-> **Terkait**: [Architecture Overview](architecture.md) · [source-code.md](../.sparkmind/standards/source-code.md) · [environment.md](../.sparkmind/standards/environment.md) · [git-workflow.md](../.sparkmind/workflows/git-workflow.md)
+> **Version**: 2.0 · **Status**: Active · **Updated**: 2026-07-13
+> **Owner**: Engineering
 
-Panduan menyiapkan lingkungan development dari nol sampai aplikasi berjalan
-lokal.
+## Prerequisites
 
----
-
-## 1. Prasyarat
-
-| Tool | Versi | Catatan |
-|------|-------|---------|
-| Node.js | ≥ 20 (lihat `.nvmrc`) | `nvm use` bila memakai nvm |
-| pnpm | 10.x (lihat `packageManager` di `package.json`) | Aktifkan via `corepack enable` |
-| Git | terbaru | |
+- Git
+- Node.js 20 or newer (`.nvmrc`)
+- pnpm 10.13.1 via Corepack (`package.json#packageManager`)
 
 ```bash
-# Aktifkan pnpm (sekali saja per mesin)
 corepack enable
 corepack prepare pnpm@10.13.1 --activate
 ```
 
-## 2. Clone & Install
+## Clone and Install
 
 ```bash
-git clone https://github.com/Sparkmind-obp-off/Sparkmind.git
-cd Sparkmind
+git clone https://github.com/Sparkmind-obp-off/Sparkmind-app.git
+cd Sparkmind-app
 pnpm install
 ```
 
-## 3. Environment Variables
+## Environment
+
+The current placeholder app has no required secrets. For future variables:
 
 ```bash
 cp .env.example apps/web/.env.local
 ```
 
-Isi nilai sesuai kebutuhan — lihat
-[standar environment](../.sparkmind/standards/environment.md).
-Fase sekarang belum ada secret wajib; app berjalan tanpa mengisi apa pun.
+Follow the environment contract in [Engineering Standards](../.sparkmind/standards/engineering.md#environment-contract). Never commit `.env.local`.
 
-## 4. Menjalankan Aplikasi
+## Run
 
 ```bash
-# Semua app via Turborepo
 pnpm dev
-
-# Atau hanya web
+# or only the web app
 pnpm --filter @sparkmind/web dev
 ```
 
-Buka http://localhost:3000.
+Open http://localhost:3000.
 
-## 5. Perintah Umum
+## Quality Commands
 
-| Perintah | Fungsi |
-|----------|--------|
-| `pnpm dev` | Dev server semua apps |
-| `pnpm build` | Production build semua package |
-| `pnpm lint` | ESLint seluruh workspace |
-| `pnpm type-check` | TypeScript check seluruh workspace |
-| `pnpm format` | Prettier write |
-| `pnpm format:check` | Prettier check (untuk CI nanti) |
+| Command | Purpose |
+|---|---|
+| `pnpm lint` | ESLint across workspaces |
+| `pnpm type-check` | TypeScript checks |
+| `pnpm build` | Production build |
+| `pnpm format` | Apply Prettier |
+| `pnpm format:check` | Verify formatting |
 
-## 6. Sebelum Commit (Checklist)
+Before a code milestone, run all four checks plus a behavior-level smoke test. Documentation-only changes still require link validation and `git diff --check`.
 
-1. `pnpm lint` dan `pnpm type-check` lulus.
-2. `pnpm build` sukses (untuk perubahan kode).
-3. Dokumentasi terkait diperbarui.
-4. Ikuti [git-workflow.md](../.sparkmind/workflows/git-workflow.md)
-   (Conventional Commits).
+## Troubleshooting
 
-## 7. Troubleshooting
+| Symptom | Action |
+|---|---|
+| `pnpm` not found | Run the Corepack commands above |
+| Wrong Node version | Run `nvm use` or install Node 20+ |
+| Workspace links missing | Run `pnpm install` from repository root |
+| Restricted network install | Use `pnpm install --network-concurrency=3 --child-concurrency=1` |
 
-| Gejala | Solusi |
-|--------|--------|
-| `pnpm: command not found` | Jalankan langkah corepack di §1 |
-| Error versi Node | `nvm use` / install Node 20+ |
-| Install lambat/gagal di lingkungan terbatas | `pnpm install --network-concurrency=3 --child-concurrency=1` |
-| Type error dari package lain | Jalankan `pnpm install` ulang (workspace link) |
+Workflow and commit policy: [`.sparkmind/WORKFLOW.md`](../.sparkmind/WORKFLOW.md).

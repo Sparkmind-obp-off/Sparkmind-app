@@ -1,50 +1,38 @@
-# Engineering Report [XXX]: [Judul Misi/Sesi]
+# Engineering Report XXX: [Sprint / Milestone]
 
-- **Tanggal**: YYYY-MM-DD
-- **Engineer**: [AI Engineer / nama]
-- **Sprint / Misi**: [nomor & nama]
-- **Commit**: [hash / range]
+> **Status**: Final · **Date**: YYYY-MM-DD
+> **Owner**: [Engineer]
 
----
+Create this report once when a sprint or milestone closes. Do not create one per routine session.
 
-## 1. Ringkasan
+## Outcome
 
-[2–4 kalimat: apa yang dikerjakan dan hasilnya.]
+[What changed and what user/business/engineering outcome now exists?]
 
-## 2. Requirement
+## Scope Delivered
 
-[Apa yang diminta pada misi ini.]
+- [Acceptance criterion and evidence]
 
-## 3. Yang Dikerjakan
+## Key Changes
 
-- [Perubahan 1]
-- [Perubahan 2]
+| Area | Change | Canonical document/code |
+|---|---|---|
+| | | |
 
-## 4. Keputusan Penting & Alasannya
+## Decisions
 
-| Keputusan | Alasan | ADR |
-|-----------|--------|-----|
-| ... | ... | ADR-XXXX / - |
+[Links to ADRs, or “None”. Do not repeat full ADR rationale.]
 
-## 5. Yang TIDAK Dikerjakan (dan kenapa)
+## Verification
 
-[Hal yang sengaja ditunda/di-luar-scope, agar sesi berikutnya tidak bingung.]
+| Check | Result | Notes |
+|---|---|---|
+| | | |
 
-## 6. Testing
+## Deviations / Remaining Risk
 
-[Bagaimana perubahan diverifikasi.]
+- [Out-of-scope, failed check, debt, or “None”]
 
-## 7. Dampak ke Dokumentasi
+## Next Recommendation
 
-- [ ] STATE.md diperbarui
-- [ ] CHANGELOG.md diperbarui
-- [ ] Dokumen lain: [...]
-
-## 8. Rekomendasi Langkah Berikutnya
-
-1. [Rekomendasi 1]
-2. [Rekomendasi 2]
-
-## 9. Blocker / Butuh Keputusan
-
-[Item yang menunggu Founder/CTO, atau "-".]
+[One prioritized recommendation; operational next action remains in CURRENT_STATE.md.]

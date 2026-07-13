@@ -1,8 +1,8 @@
 # ADR-0002: SDOS — Knowledge Hidup di Repository, Bukan di System Prompt
 
-> **Versi**: 1.1 · **Status dokumen**: Final
-> **Terakhir diperbarui**: 2026-07-13 (Sprint 001 — hanya metadata; keputusan tidak berubah)
-> **Terkait**: [DECISION_LOG.md](../DECISION_LOG.md) · [README SDOS](../README.md) · [CONSTITUTION.md](../CONSTITUTION.md)
+> **Versi**: 1.2 · **Status dokumen**: Partially Superseded by [ADR-0006](ADR-0006-sdos-v2-context-driven-operations.md)
+> **Terakhir diperbarui**: 2026-07-13 (Sprint 003)
+> **Terkait**: [DECISION_LOG.md](../DECISION_LOG.md) · [README SDOS](../README.md) · [ADR-0006](ADR-0006-sdos-v2-context-driven-operations.md)
 
 - **Tanggal**: 2026-07-13
 - **Status**: ✅ Accepted
@@ -30,10 +30,7 @@ repository, pada folder `.sparkmind/`, dengan pembagian tegas:
 | `.sparkmind/` | Semua knowledge, standar, sprint, keputusan, state |
 | Task/Mission | Pekerjaan spesifik satu sesi |
 
-Struktur SDOS: `CONSTITUTION.md` (aturan permanen), `STATE.md` (kondisi
-terkini), `context/` (knowledge), `workflows/` (cara kerja), `standards/`
-(kualitas), `sprints/`, `decisions/` (ADR), `templates/`, `proposals/`,
-`reports/`.
+Struktur awal SDOS mencakup constitution, state, context, workflows, standards, sprints, decisions, templates, proposals, dan reports. **Layout operasional ini kemudian disederhanakan oleh ADR-0006; keputusan menyimpan knowledge di repository tetap berlaku.**
 
 ## Alasan
 
@@ -41,7 +38,7 @@ terkini), `context/` (knowledge), `workflows/` (cara kerja), `standards/`
    sampah" yang terus membengkak dan sulit dipelihara.
 2. Repository sebagai Single Source of Truth membuat knowledge ter-version,
    ter-review, dan bisa dipakai AI mana pun (tidak terkunci ke satu vendor AI).
-3. `STATE.md` menjembatani hilangnya memori antar sesi AI.
+3. State yang ter-version menjembatani hilangnya memori antar sesi AI (kini `CURRENT_STATE.md` sesuai ADR-0006).
 
 ## Alternatif yang Dipertimbangkan
 
@@ -54,7 +51,5 @@ terkini), `context/` (knowledge), `workflows/` (cara kerja), `standards/`
 
 - **Positif**: onboarding AI/manusia baru = baca `.sparkmind/`; system prompt
   stabil; knowledge ter-version di git.
-- **Negatif**: disiplin update `STATE.md` & dokumen wajib dijaga setiap sesi —
-  ini dienforce lewat `workflows/session-lifecycle.md` dan Definition of Done.
-- **Ditinjau ulang ketika**: struktur terasa berat untuk tim; bisa disederhanakan
-  via ADR baru.
+- **Negatif (historis)**: struktur awal menuntut terlalu banyak context loading dan sinkronisasi dokumen.
+- **Ditinjau ulang**: ADR-0006 menyederhanakan layout, workflow, dan update triggers setelah friksi Sprint 002.

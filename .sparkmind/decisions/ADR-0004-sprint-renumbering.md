@@ -42,7 +42,7 @@ File `sprint-001-foundation.md` dipindahkan (git mv) menjadi
 1. Requirement Founder adalah sumber otoritas penomoran — Sprint 001 secara
    eksplisit didefinisikan sebagai SDOS v1.1 Refinement.
 2. Menyisipkan nomor (mis. "Sprint 000.5") merusak konsistensi format
-   `sprint-XXX` di `standards/repository.md`.
+   `sprint-XXX` di [`standards/engineering.md`](../standards/engineering.md#naming).
 3. Belum ada sprint Foundation yang berjalan — renumbering sekarang murah;
    nanti mahal.
 

@@ -1,8 +1,7 @@
 # Sparkmind Engineering Constitution
 
-> **Versi**: 1.0 · **Status dokumen**: Aktif
-> **Terakhir diperbarui**: 2026-07-13 (Sprint 001 — hanya metadata; isi tidak berubah)
-> **Terkait**: [README SDOS](README.md) · [STATE.md](STATE.md) · [session-lifecycle.md](workflows/session-lifecycle.md) · [DECISION_LOG.md](DECISION_LOG.md)
+> **Version**: 2.0 · **Status**: Active · **Updated**: 2026-07-13
+> **Owner**: Founder/CTO · **Related**: [SDOS](README.md) · [Current State](CURRENT_STATE.md) · [Workflow](WORKFLOW.md) · [Decision Log](DECISION_LOG.md)
 >
 > Perubahan pada dokumen ini hanya boleh dilakukan atas persetujuan Founder/CTO,
 > dan harus dicatat sebagai ADR di `decisions/`.
@@ -41,7 +40,7 @@ Jika jawabannya *tidak* → masuk backlog, bukan dikerjakan sekarang.
    Alasan yang penting dicatat di Decision Log (`decisions/`).
 
 5. **Jangan berasumsi.**
-   Informasi tidak jelas → STOP → buat Proposal di `proposals/`.
+   Informasi tidak jelas → STOP → catat sebagai blocker di `CURRENT_STATE.md` dan minta keputusan owner.
 
 6. **Jangan mengubah scope.**
    Kerjakan hanya yang diminta pada misi/sprint aktif.
@@ -90,13 +89,12 @@ Sebuah task dianggap selesai apabila **semua** poin berikut terpenuhi:
 
 - ✓ Requirement terpenuhi
 - ✓ Code berjalan (sudah ditest)
-- ✓ Dokumentasi diperbarui
-- ✓ `STATE.md` diperbarui
+- ✓ Dokumentasi kanonis diperbarui hanya jika fact owner-nya berubah
+- ✓ `CURRENT_STATE.md` berisi status dan next action yang benar
 - ✓ Repository tetap konsisten & bersih
-- ✓ Tidak menambah technical debt
-- ✓ Commit dibuat dengan pesan yang jelas
-- ✓ Push ke repository
-- ✓ Engineering Report dibuat di `reports/`
+- ✓ Tidak menambah technical debt yang tidak dicatat
+- ✓ Commit dibuat dengan pesan yang jelas dan di-push
+- ✓ Engineering Report dibuat hanya saat sprint/milestone ditutup
 
 ---
 

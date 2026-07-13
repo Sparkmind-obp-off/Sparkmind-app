@@ -1,59 +1,81 @@
 # Engineering Standards
 
-> **Versi**: 1.1 · **Status dokumen**: Aktif
-> **Terakhir diperbarui**: 2026-07-13 (Sprint 001)
-> **Terkait**: [documentation.md](documentation.md) · [repository.md](repository.md) · [tech-stack.md](../context/tech-stack.md)
+> **Version**: 2.0 · **Status**: Active · **Updated**: 2026-07-13
+> **Owner**: Engineering
 
-Standar penulisan kode Sparkmind. Berlaku untuk semua kode di repository.
+This document owns code, repository, source-structure, dependency, testing, and environment standards.
 
----
+## Core Rules
 
-## 1. Bahasa & Tooling
+- Use TypeScript with `strict: true`; prefer `unknown` + narrowing over `any`.
+- Optimize for readable, small, focused code. Apply Rule of Three before abstraction.
+- Handle errors explicitly; remove dead code instead of commenting it out.
+- Add dependencies only for current requirements; record architecture-impacting choices in an ADR.
+- Never commit secrets, local environment files, build output, logs, or temporary files.
+- Keep the repository clean: descriptive names, no unexplained files, no empty placeholder directories.
 
-- **TypeScript** untuk seluruh kode aplikasi. `strict: true` wajib.
-- Hindari `any`. Gunakan `unknown` + narrowing bila tipe tidak diketahui.
-- Formatter & linter mengikuti konfigurasi repo (akan ditambahkan saat
-  scaffold monorepo di Sprint 002: Prettier + ESLint default Next.js).
+## Monorepo Boundaries
 
-## 2. Prinsip Kode
+```text
+apps/       deployable applications: UI, routing, composition
+packages/   reusable code and business/platform logic
+docs/       technical setup and architecture
+.sparkmind/ governance, current state, decisions, and delivery records
+```
 
-1. **Sederhana dulu.** Kode yang mudah dibaca mengalahkan kode yang "pintar".
-2. **Jangan abstraksi prematur.** Duplikasi dua kali masih boleh; abstraksi
-   dibuat saat pola ketiga muncul (Rule of Three).
-3. **Fungsi kecil, fokus satu tugas.**
-4. **Penamaan deskriptif** — nama menjelaskan tujuan, bukan implementasi.
-5. **Error harus ditangani** — jangan menelan error secara diam-diam.
-6. **Kode mati dihapus**, bukan dikomentari.
+- `apps/*` may depend on `packages/*`; packages must not depend on apps.
+- Avoid dependency cycles between packages.
+- Cross-workspace imports use `@sparkmind/<name>` with `workspace:*`, never relative traversal.
+- Create `packages/ui`, `packages/ai`, or `packages/foundry` only when the active sprint needs them.
+- A package normally provides `package.json`, `tsconfig.json`, ESLint config, `README.md`, and `src/index.ts`.
+- Required scripts: `lint` and `type-check` for all workspaces; `dev`/`build` for deployable apps.
 
-## 3. Struktur
+## Current Placement
 
-- Ikuti struktur monorepo di `context/tech-stack.md`.
-- Logika bisnis/platform hidup di `packages/` (terutama `packages/foundry`),
-  **bukan** di dalam `apps/`.
-- `apps/` hanya berisi UI, routing, dan wiring.
+| Code | Location |
+|---|---|
+| Next.js pages/layout/routes | `apps/web/src/app/` |
+| App-specific components | `apps/web/src/components/` when needed |
+| Shared utilities/types | `packages/shared/src/` |
+| Future platform logic | `packages/foundry/` |
+| Future LLM providers | `packages/ai/` via Vercel AI SDK |
 
-## 4. Secrets & Konfigurasi
+LLM prompts belong with Foundry prompt assets, not hardcoded in UI. Provider failures require explicit timeout/rate-limit handling and a clear fallback.
 
-- Secret hanya di environment variables (`.env.local`, Vercel/Cloudflare
-  dashboard). **Tidak pernah** di-commit.
-- Sediakan `.env.example` berisi daftar variabel (tanpa nilai).
+## Environment Contract
 
-## 5. Dependency
+- Root `.env.example` lists every used variable without secret values.
+- Local app values live in `apps/web/.env.local` and are gitignored.
+- Production values live in the deployment provider's secret store.
+- Browser-visible values use `NEXT_PUBLIC_*`; all other names use `SCREAMING_SNAKE_CASE`.
+- Add an environment variable only when code uses it; update setup documentation when onboarding changes.
+- Centralize runtime configuration after three or more variables justify a config module.
 
-- Tambah dependency hanya jika benar-benar dibutuhkan.
-- Dependency besar/berdampak arsitektur → catat alasannya (ADR bila perlu).
-- Gunakan versi stabil, hindari paket yang tidak terawat.
+## Verification
 
-## 6. Testing
+For code changes, run the relevant subset—normally all before a milestone:
 
-- Fase bootstrap: minimal **smoke test manual** — jalankan aplikasi dan
-  verifikasi alur utama sebelum commit.
-- Unit test ditambahkan untuk logika inti Foundry (mulai Sprint 003).
-- Jangan pernah menyatakan task selesai untuk kode yang belum pernah dijalankan.
+```bash
+pnpm lint
+pnpm type-check
+pnpm build
+pnpm format:check
+```
 
-## 7. AI-Specific
+Also run a behavior-level smoke test for the changed flow. Add unit tests for reusable/core logic; do not substitute type-checking for behavioral tests.
 
-- Semua panggilan LLM melalui layer `packages/ai` (Vercel AI SDK) —
-  jangan panggil SDK provider langsung dari `apps/`.
-- Prompt hidup di `packages/foundry/prompts/`, bukan hardcoded di komponen.
-- Selalu tangani kegagalan LLM (timeout, rate limit) dengan fallback yang jelas.
+For repository review, run:
+
+```bash
+git diff --check
+git status --short
+git diff --stat
+```
+
+## Naming
+
+- General files/directories: `kebab-case`, unless a framework requires a convention.
+- ADR: `ADR-XXXX-short-title.md`.
+- Sprint: `sprint-XXX-short-title.md`.
+- Report: `XXX-short-title.md` (multiple reports in one sprint may share the prefix).
+- Source files use the framework convention; exported React component names use `PascalCase`.

@@ -1,31 +1,25 @@
-# Sprints — Indeks
+# Sprint Index
 
-> **Versi**: 1.2 · **Status dokumen**: Aktif
-> **Terakhir diperbarui**: 2026-07-13 (Sprint 002)
-> **Terkait**: [CURRENT_SPRINT.md](../CURRENT_SPRINT.md) · [Template sprint](../templates/sprint.md) · [STATE.md](../STATE.md)
+> **Version**: 2.0 · **Status**: Active · **Updated**: 2026-07-13
+> **Owner**: Engineering
 
-Satu file per sprint, format `sprint-XXX-nama.md` (pakai `../templates/sprint.md`).
+Sprint files own approved scope, acceptance criteria, task completion, and retrospective. Current operational progress and next action live only in [`CURRENT_STATE.md`](../CURRENT_STATE.md).
 
-Aturan:
-- Hanya **satu** sprint berstatus `Active` pada satu waktu — sprint aktif
-  selalu ditunjuk oleh [`CURRENT_SPRINT.md`](../CURRENT_SPRINT.md).
-- Sprint baru berstatus `Draft` sampai disetujui Founder.
-- Task di luar sprint aktif → backlog (catat di sprint Draft berikutnya atau
-  sebagai catatan di sprint aktif, bagian Out of Scope).
+## Rules
 
-> ℹ️ Penomoran sprint diubah pada Sprint 001: sprint "Foundation" (semula 001)
-> menjadi **002**, dan seterusnya. Lihat
-> [ADR-0004](../decisions/ADR-0004-sprint-renumbering.md).
+- At most one sprint is Active.
+- New sprint scope is Draft until Founder approval.
+- Use [`templates/sprint.md`](../templates/sprint.md).
+- Keep completed sprint files as historical evidence; do not load them at session start.
+- Engineering Report is created once at sprint closure.
 
-| Sprint | Nama | Status | Output Utama |
-|--------|------|--------|--------------|
-| [000](sprint-000-bootstrap-sdos.md) | Bootstrap SDOS | 🏁 Done | `.sparkmind/` |
-| [001](sprint-001-sdos-refinement.md) | SDOS v1.1 Refinement | 🏁 Done | SDOS stabil: metadata, cross-reference, CURRENT_SPRINT, DECISION_LOG |
-| [002](sprint-002-foundation.md) | Engineering Foundation | 🏁 Done | Monorepo scaffold (apps/web + packages/shared), tooling, standar, docs — di-rescope via [ADR-0005](../decisions/ADR-0005-sprint-002-rescope.md) |
-| — | Landing Page | 📋 Backlog | Hero + Book a Demo + DNS Cloudflare + deploy Vercel (keluar dari 002 — ADR-0005; nomor ditetapkan saat planning) |
-| — | Foundry Core | 📋 Backlog | AI abstraction, prompts, knowledge layer |
-| — | ClinicFlow AI | 📋 Backlog | Demo AI Receptionist |
-| — | Sales | 📋 Backlog | Outreach & demo ke calon klien |
+## Index
 
-> Urutan Landing Page vs Foundry Core diputuskan Founder saat planning
-> sprint berikutnya; penomoran sprint ditetapkan saat itu.
+| Sprint | Name | Status | Primary output |
+|---|---|---|---|
+| [000](sprint-000-bootstrap-sdos.md) | Bootstrap SDOS | Done | Repository governance foundation |
+| [001](sprint-001-sdos-refinement.md) | SDOS v1.1 Refinement | Done | Metadata and indexes |
+| [002](sprint-002-foundation.md) | Engineering Foundation | Done | Monorepo, tooling, standards, setup |
+| [003](sprint-003-sdos-v2-upgrade.md) | SDOS v2 Upgrade | Active | Minimal context and single-state operations |
+
+Unscheduled product candidates and blockers are owned by [`CURRENT_STATE.md`](../CURRENT_STATE.md), not duplicated here.

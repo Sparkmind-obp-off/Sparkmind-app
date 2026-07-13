@@ -2,9 +2,32 @@
 
 Semua perubahan penting pada repository ini dicatat di file ini.
 
-Format mengikuti [Keep a Changelog](https://keepachangelog.com/id-ID/1.1.0/),
-dan proyek ini menggunakan penomoran misi/sprint (belum semantic versioning —
-akan dimulai ketika ada rilis produk).
+Format mengikuti [Keep a Changelog](https://keepachangelog.com/id-ID/1.1.0/). SDOS dan engineering milestones dicatat saat selesai; file ini tidak diperbarui untuk setiap sesi.
+
+## [SDOS 2.0 / Sprint 003] — 2026-07-13 — Context-Driven Engineering
+
+### Added
+
+- Task-based AI context router and canonical ownership map.
+- `.sparkmind/WORKFLOW.md` as the single session and Git lifecycle.
+- `.sparkmind/SESSION_HANDOFF.md` as an empty-by-default recovery contract.
+- ADR-0006, Architecture Improvement Report, and Sprint 003 records.
+
+### Changed
+
+- `STATE.md` and `CURRENT_SPRINT.md` consolidated into `CURRENT_STATE.md`.
+- Four overlapping code/repository/environment standards consolidated into `standards/engineering.md`.
+- Documentation now follows explicit update triggers: state per session, ADR on decision, changelog/report at milestone closure.
+- Root onboarding, setup, architecture, decision log, and governance updated for repository `Sparkmind-app` and SDOS v2.
+
+### Removed
+
+- Split workflow files, redundant standards, pointer-only indexes, and unused proposal scaffolding.
+
+### Notes
+
+- Historical ADRs, sprint files, and reports were preserved.
+- SDOS v2 is a repository architecture change, not a larger system prompt.
 
 ---
 
