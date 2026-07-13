@@ -1,10 +1,10 @@
 # Sparkmind Development Operating System (SDOS) v2
 
-> **Version**: 2.0 · **Status**: Active
-> **Last updated**: 2026-07-13 (Sprint 003 — SDOS v2 Upgrade)
+> **Version**: 2.0 · **Status**: STABLE / FROZEN
+> **Last updated**: 2026-07-13 (Sprint 001A — Finalization & Freeze)
 > **Owner**: Engineering · **Source of truth**: this repository
 
-SDOS is the lightweight operating layer for Sparkmind engineering. It keeps durable context in Git while minimizing what an AI or human must read and update.
+SDOS is the lightweight operating layer for Sparkmind engineering. It keeps durable context in Git while minimizing what an AI or human must read and update. This file is the canonical AI entry point; a separate `START_HERE.md` would duplicate this responsibility.
 
 ## Start in 2 Minutes
 
@@ -73,3 +73,4 @@ Historical sprints, reports, and ADRs are archives: they are discoverable throug
 - **One document, one responsibility**: link to canonical facts instead of copying them.
 - **Milestone reporting**: update `CHANGELOG.md` and create an Engineering Report only at milestone/sprint closure.
 - **Clean handoff**: `SESSION_HANDOFF.md` is empty by default and temporary when used.
+- **Freeze guard**: SDOS v2 is frozen. Reopen its architecture only for measured recurring friction, a significant defect, or a genuinely new governance need; record the reason before changing the operating model.

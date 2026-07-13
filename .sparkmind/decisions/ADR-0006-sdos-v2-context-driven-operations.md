@@ -1,6 +1,6 @@
 # ADR-0006: SDOS v2 — Context-Driven, Single-State Operations
 
-> **Version**: 1.0 · **Status**: Accepted
+> **Version**: 1.1 · **Status**: Accepted / Stable Baseline
 > **Date**: 2026-07-13 · **Decision owner**: Founder/CTO
 
 ## Context
@@ -42,6 +42,10 @@ Adopt SDOS v2 with these rules:
 ## Supersedes
 
 This ADR partially supersedes ADR-0002 only for the SDOS folder layout, mandatory full-context startup, and per-session reporting/update burden. ADR-0002's repository-as-source-of-truth decision remains accepted.
+
+## Stability Guard
+
+Sprint 001A reviewed this decision and froze SDOS v2 as the stable baseline. Its operating architecture must not change for preference-driven cleanup. Reopen it only when real delivery provides evidence of recurring friction, a significant defect, or a new governance requirement.
 
 ## Validation
 

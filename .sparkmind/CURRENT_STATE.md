@@ -1,6 +1,6 @@
 # Current State — Sparkmind
 
-> **Version**: 2.0 · **Status**: Active · **Updated**: 2026-07-13
+> **Version**: 2.0 · **Status**: STABLE / FROZEN · **Updated**: 2026-07-13
 > **Owner**: Engineering · Update at the end of each work session
 
 ## Now
@@ -8,29 +8,26 @@
 | Field | Value |
 |---|---|
 | Phase | Pre-product; engineering foundation complete |
-| Active sprint | None — [Sprint 003 — SDOS v2 Upgrade](sprints/sprint-003-sdos-v2-upgrade.md) completed |
+| Active sprint | None — [Sprint 001A — SDOS v2 Finalization & Freeze](sprints/sprint-001a-sdos-v2-finalization-freeze.md) completed |
 | Current task | Await Founder planning for the next product sprint |
-| Status | SDOS v2.0 complete |
-| Last verified baseline | Sprint 003 full pipeline passed on 2026-07-13 |
-| Next action | Founder chooses Landing Page or Foundry Core as the next sprint |
+| Status | SDOS v2.0 STABLE / FROZEN |
+| Last verified baseline | Sprint 001A architecture review and full validation passed on 2026-07-13 |
+| Next action | Start an approved product sprint; do not redesign SDOS without measured significant friction |
 
 ## Progress
 
-- [x] Audit SDOS v1.1 and Sprint 002 friction
-- [x] Define SDOS v2 ownership and minimal-context model
-- [x] Merge operational state into this file
-- [x] Consolidate session and Git workflows
-- [x] Consolidate engineering, repository, source-code, and environment standards
-- [x] Add resumable single-file handoff
-- [x] Update governance and architecture decision records
-- [x] Complete automated validation
-- [x] Prepare Conventional Commit and push to GitHub
+- [x] Complete SDOS v2 architecture and single-responsibility review
+- [x] Confirm `.sparkmind/README.md` is the single AI entry point
+- [x] Verify navigation, session resume, workflow, governance, and naming
+- [x] Resolve the stale Sprint 003 status in the sprint index
+- [x] Validate local references and duplicate long-form content
+- [x] Freeze SDOS v2 as the stable operating baseline
 
 ## Current Capabilities
 
 | Capability | State | Canonical detail |
 |---|---|---|
-| SDOS | v2.0 complete | [SDOS index](README.md) |
+| SDOS | v2.0 STABLE / FROZEN | [SDOS entry point](README.md) |
 | Monorepo | pnpm + Turborepo | [Architecture](../docs/architecture.md) |
 | Web app | Next.js 15 placeholder | `apps/web` |
 | Shared package | `@sparkmind/shared` | `packages/shared` |
@@ -46,9 +43,9 @@
 
 ## Next Product Backlog
 
-1. Landing Page: hero, Book a Demo, identity, DNS, deployment.
-2. Foundry Core: AI abstraction, prompts, and knowledge layer.
-3. ClinicFlow AI: first vertical demo.
+1. Product sprint planning and implementation.
+2. Founder chooses the first approved product outcome from the existing product context.
+3. Observe SDOS metrics across real delivery; reopen its architecture only for measured significant friction.
 
 Priority and sprint numbering are assigned during Founder-approved planning; this list is not a commitment.
 

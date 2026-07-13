@@ -7,7 +7,7 @@ Sparkmind is a pre-product TypeScript monorepo for the Foundry platform and vert
 ## Status and URLs
 
 - **Phase**: Pre-product; engineering foundation complete
-- **SDOS**: Sparkmind Development Operating System v2.0
+- **SDOS**: Sparkmind Development Operating System v2.0 — STABLE / FROZEN
 - **Repository**: https://github.com/Sparkmind-obp-off/Sparkmind-app
 - **Planned website**: https://sparkmind.biz.id (not deployed)
 - **Current work/blockers**: [`.sparkmind/CURRENT_STATE.md`](.sparkmind/CURRENT_STATE.md)
@@ -29,7 +29,7 @@ Sparkmind is a pre-product TypeScript monorepo for the Foundry platform and vert
 - `apps/web`: Next.js 15 App Router placeholder application.
 - `packages/shared`: shared TypeScript constants and result type.
 - TypeScript strict mode, ESLint, Prettier, and workspace scripts.
-- SDOS v2: minimal context router, single operational state, one workflow, resumable handoff, ADR and sprint governance.
+- SDOS v2 (stable/frozen): canonical AI entry point, minimal context router, single operational state, one workflow, resumable handoff, ADR and sprint governance.
 
 ## Functional Entry Points
 
@@ -63,7 +63,7 @@ No public API routes, authentication flows, or product data endpoints exist yet.
 1. Founder selects the next sprint: Landing Page or Foundry Core.
 2. If Landing Page is selected, provide deployment/DNS credentials through secure channels.
 3. Implement only the approved sprint and add infrastructure progressively.
-4. Review SDOS v2 metrics after two product sprints.
+4. Measure SDOS v2 after two product sprints; reopen its frozen architecture only if evidence shows significant friction.
 
 ## User Guide
 

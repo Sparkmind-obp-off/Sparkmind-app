@@ -4,6 +4,25 @@ Semua perubahan penting pada repository ini dicatat di file ini.
 
 Format mengikuti [Keep a Changelog](https://keepachangelog.com/id-ID/1.1.0/). SDOS dan engineering milestones dicatat saat selesai; file ini tidak diperbarui untuk setiap sesi.
 
+## [SDOS 2.0 STABLE / Sprint 001A] — 2026-07-13 — Finalization & Freeze
+
+### Reviewed
+
+- Seluruh struktur `.sparkmind/`, tanggung jawab dokumen, navigation, cross-reference, workflow, session resume, governance, dan naming.
+- `.sparkmind/README.md` dikonfirmasi sebagai AI entry point kanonis; file `START_HERE.md` terpisah tidak dibuat karena akan menduplikasi tanggung jawab.
+
+### Fixed
+
+- Status Sprint 003 yang masih `Active` pada indeks diselaraskan menjadi `Done`.
+
+### Frozen
+
+- SDOS v2 ditandai **STABLE / FROZEN**.
+- Perubahan arsitektur SDOS berikutnya hanya dibuka untuk friksi berulang yang terukur, defect signifikan, atau kebutuhan governance baru.
+- Sprint berikutnya berfokus pada pembangunan dan validasi produk.
+
+---
+
 ## [SDOS 2.0 / Sprint 003] — 2026-07-13 — Context-Driven Engineering
 
 ### Added
